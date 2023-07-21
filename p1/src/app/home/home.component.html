@@ -186,7 +186,51 @@
           <div class="col-2 btn btn-info" data-bs-toggle="modal" data-bs-target="#myModal">Add Requirements</div>
           <div class="col-2"></div>
         </div>
-
+        <section class="ftco-section">
+          <div class="container">
+              
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="table-wrap">
+                          <table class="table table-responsive-xl">
+                            <thead>
+                              <tr>
+                              <th>Id</th>
+                              <th>&nbsp;&nbsp;&nbsp;Requirement Name</th>
+                                <th>Training Area</th>
+                                <th>Approved / Pending</th>
+                                <th>Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr class="alert" role="alert" *ngFor="let item of items; let i = index">
+                                  <td>
+                                          {{ i + 1 }}
+                                  </td>
+                                <td class="d-flex align-items-center">
+                                   
+                                    <div class="pl-3 email">
+                                        <span>{{ item.name }}</span>
+                                        <span></span>
+                                    </div>
+                                </td>
+                                <td>{{ item.area }}</td>
+                                <td class="status"><span class="active" *ngIf="item.approved == 1">Approved</span>
+                                  <span class="waiting" *ngIf="item.approved == 0">Pending</span></td>     
+                                <td><i class="bi-eye-fill"></i>&nbsp;&nbsp;<i class="bi-pencil-square">&nbsp;&nbsp;</i><i class="bi-trash-fill"></i></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      
+      <script src="assets/dashboard/jquery.min.js"></script>
+      <script src="assets/dashboard/js/popper.js"></script>
+      <script src="assets/dashboard/js/bootstrap.min.js"></script>
+      <script src="assets/dashboard/js/main.js"></script>
 
         <div class="modal" id="myModal">
           <div class="modal-dialog">
