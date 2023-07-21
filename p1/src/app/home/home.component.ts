@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RequirementserviceService } from '../requirementservice.service';
 
 @Component({
@@ -6,15 +6,26 @@ import { RequirementserviceService } from '../requirementservice.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
   constructor(private reqservice:RequirementserviceService){}
+
+  items:any;
 requirementform={
 name:'',
 area:'',
 institute:'',
 requirements:'',
-hours:''
+hours:'',
+approved:'0'
 
+}
+
+ngOnInit(): void {
+  this.reqservice.getRequirements().subscribe((data=>{
+    this.items=data;
+    console.log(data);
+    
+  }))
 }
 
   addrequirement(){

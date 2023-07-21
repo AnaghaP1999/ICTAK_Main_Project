@@ -10,6 +10,10 @@ export class RequirementserviceService {
     
    }
 
+   getRequirements() {
+    return this.http.get('http://localhost:3000/api/requirementlist');
+  }
+
    requirementadd(data:any){
     return this.http.post<any>("http://localhost:3000/api/addrequirement", data);
 

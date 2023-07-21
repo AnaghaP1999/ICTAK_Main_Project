@@ -9,7 +9,16 @@ router.use(express.json());
 router.use(express.urlencoded({extended:true}));
 
 
-
+router.get('/requirementlist', (req, res) => {
+    requirementData.find()
+      .then((Requirements) => {
+        res.json(Requirements);
+      })
+      .catch((error) => {
+        console.error('Error retrieving Requirements:', error);
+        res.status(500).send('Error retrieving Requirements');
+      });
+  });
 
 router.post('/addrequirement',async (req,res)=>{                              
     try{

@@ -20,6 +20,10 @@ const Schema = mongoose.Schema({
         type:String,
       
     },
+    approved:{                                                                  
+        type:Number,
+      
+    },
   
 });
 
