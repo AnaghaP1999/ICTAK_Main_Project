@@ -43,4 +43,9 @@ export class RequirementserviceService {
   deleteRequirement(id: string): Observable<any> {
     return this.http.delete<any>(`http://localhost:3000/api/delete-requirement/${id}`);
   }
+
+  //  Approve Curriculum API - Admin
+  updateItemToApproved(id: string): Observable<any> {
+    return this.http.put(`http://localhost:3000/api/approve-curriculum/${id}`, { approved: 1 });
+  }
 }

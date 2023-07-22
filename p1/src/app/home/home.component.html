@@ -216,7 +216,7 @@
                                 </td>
                                 <td>{{ item.area }}</td>
                                 <td class="status"><span class="active" *ngIf="item.approved == 1">Approved</span>
-                                  <span class="waiting" *ngIf="item.approved == 0">Pending</span></td>     
+                                  <span class="waiting" *ngIf="item.approved == 0" (click)="updateToApproved(item._id)">Pending</span></td>     
                                
                                 <td><i class="bi-eye-fill" (click)="viewDetails(item._id)"  data-bs-toggle="modal" data-bs-target="#viewmodal">
 

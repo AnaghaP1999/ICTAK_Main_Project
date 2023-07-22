@@ -80,11 +80,22 @@ router.get('/viewdata/:_id',async (req,res)=>{
   } catch (error) {
       res.status(400).json({ message: "GET request CANNOT be completed" });    
   }
-})
+}) 
 
 
+//  Approve Curriculum - Admin
+router.put('/approve-curriculum/:id', async (req, res) => {
+  const { id } = req.params;
+  const { approved } = req.body;
 
-
+  try {
+    const updatedItem = await requirementData.findByIdAndUpdate(id, { approved }, { new: true });
+    return res.json(updatedItem);
+  } catch (err) {
+    console.error('Error updating item:', err);
+    return res.status(500).json({ error: 'Error updating item' });
+  }
+});
 
 
 //   delete a requirement - Admin
