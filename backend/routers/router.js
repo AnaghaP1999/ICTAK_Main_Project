@@ -118,7 +118,21 @@ router.put('/approve-curriculum/:id', async (req, res) => {
   });
 
 
+//   search filter - Admin
 
+  router.get('/search', (req, res) => {
+    const { name, institution, area, requirements } = req.query;
+    const filters = {};
+    if (name !== undefined && name !== '') filters.name = name;
+    if (institution !== undefined && institution !== '') filters.institution = institution;
+    if (area !== undefined && area !== '') filters.area = area;
+    if (requirements !== undefined && requirements !== '') filters.requirements = requirements;
+    
+    // Fetch data from db based on the filters
+    requirementData.find(filters)
+      .then(result => res.json(result))
+      .catch(err => res.status(500).json({ error: 'Error fetching data.' }));
+  });
 
 
 
