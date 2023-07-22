@@ -12,7 +12,7 @@ const Schema = mongoose.Schema({
         type:String,                                                          
      
     },
-    requirement:{                                                                  
+    requirements:{                                                                  
         type:String,
 
     },
