@@ -220,6 +220,7 @@
                                 <td><i class="bi-eye-fill"(click)="viewDetails(item._id)"  data-bs-toggle="modal" data-bs-target="#viewmodal" >
 
                                 </i>&nbsp;&nbsp;<i class="bi-pencil-square">&nbsp;&nbsp;</i><i class="bi-trash-fill"></i></td>
+                                <td><i class="bi-eye-fill"></i>&nbsp;&nbsp;<i class="bi-pencil-square" [routerLink]="['/edit-requirement', item._id]">&nbsp;&nbsp;</i><i class="bi-trash-fill" (click)="deleteRequirement(item._id)"></i></td>
                               </tr>
                             </tbody>
                           </table>

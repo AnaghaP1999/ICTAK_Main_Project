@@ -7,13 +7,14 @@ import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { EditrequirementComponent } from './editrequirement/editrequirement.component'
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    
+    EditrequirementComponent
   ],
   imports: [
     BrowserModule,
