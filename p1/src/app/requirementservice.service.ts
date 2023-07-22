@@ -21,6 +21,11 @@ export class RequirementserviceService {
     return this.http.post<any>("http://localhost:3000/api/addrequirement", data);
 
    }
+   viewdetailsse(id:any){
+    return this.http.get(`http://localhost:3000/api/viewdata/${id}`)
+   }
+
+  
 
   //  get requirement by id API - Admin
    getDataById(id: string): Observable<any> {

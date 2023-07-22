@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequirementserviceService } from '../requirementservice.service';
+import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -8,8 +9,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
+
+viewdetails:any=[];
+names:any;
+areas:any;
+reid:any;
+stat:any;
   itemIdInput: any;
-  constructor(private reqservice:RequirementserviceService, private route: ActivatedRoute, private router:Router){}
+  constructor(private reqservice:RequirementserviceService, private route: ActivatedRoute, private router:Router,private http:HttpClient){}
 
   items:any;
   requirements: any = {};
@@ -40,6 +47,19 @@ ngOnInit(): void {
       alert('Requirement form added successfully');
       window.location.reload();
     })
+  }
+
+  
+  viewDetails(itemId: any) {
+    this.reqservice.viewdetailsse(itemId).subscribe(details => {
+    this.viewdetails=  details
+    console.log(details);
+    console.log(this.viewdetails.data._id)
+    this.names=this.viewdetails.data._id;
+    this.areas=this.viewdetails.data.name;
+    this.reid=this.viewdetails.data._id
+    this.stat=this.viewdetails.data.approved
+    });
   }
 
   // delete a requirement - Admin
