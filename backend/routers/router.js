@@ -37,6 +37,21 @@ router.post('/addrequirement',async (req,res)=>{
 
 
 
+router.get('/viewdata/:_id',async (req,res)=>{
+  try {
+      let id = req.params._id;
+      console.log(id)
+      let data = await requirementData.findById(id);
+      res.json({data:data,status:200}).status(201);
+  } catch (error) {
+      res.status(400).json({ message: "GET request CANNOT be completed" });    
+  }
+})
+
+
+
+
+
 
 
 
