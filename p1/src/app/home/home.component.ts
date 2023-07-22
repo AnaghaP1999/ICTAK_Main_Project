@@ -35,13 +35,11 @@ approved:'0'
 ngOnInit(): void {
   this.reqservice.getRequirements().subscribe((data=>{
     this.items=data;
-    console.log(this.items);
-
   }))
 }
 
 // Add a requirement - Admin
-  addrequirement(){console.log('this.requirementform',this.requirementform);
+  addrequirement(){
   
       this.reqservice.requirementadd(this.requirementform).subscribe(res=>{
       alert('Requirement form added successfully');
@@ -81,5 +79,27 @@ ngOnInit(): void {
         }  
       }
     );  
+  }
+
+  //  Approve Curriculum - Admin
+  updateToApproved(id: string) {
+    this.reqservice.getDataById(id).subscribe(
+      (response) => {
+        this.requirements = response;
+        if (confirm('Are you sure you want to approve this Curriculum?')) { 
+          this.reqservice.updateItemToApproved(this.requirements._id).subscribe(
+            () => {
+              this.router.navigate(['']);
+              window.location.reload();
+            },
+            (error) => {
+              this.requirements.approved = 0;
+              console.error('Error updating "approved" field:', error);
+            }
+          );
+          
+        }  
+      }
+    );
   }
 }
