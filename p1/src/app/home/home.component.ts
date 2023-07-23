@@ -20,7 +20,7 @@ hou:any;
 
   itemIdInput: any;
   searchForm: FormGroup;
-  constructor(private reqservice:RequirementserviceService, private route: ActivatedRoute, private router:Router,private http:HttpClient, private formBuilder: FormBuilder, ){
+  constructor(private reqservice:RequirementserviceService, private route: ActivatedRoute, private router:Router,private http:HttpClient, private formBuilder: FormBuilder ){
     this.searchForm = this.formBuilder.group({
       name: [''],
       institution: [''],

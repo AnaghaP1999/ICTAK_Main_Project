@@ -182,6 +182,29 @@
 
                
                 <section class="ftco-section">
+                  <form [formGroup]="searchForm">
+                    <div class="d-flex">
+                      <input class="form-control me-4" type="text" name="name" formControlName="name" placeholder="Search by Requirement" aria-label="Search">
+                      <input class="form-control me-4" type="text" name="institution" formControlName="institution" placeholder="Search by Institution" aria-label="Search">
+                      <select class="form-select form-control me-4" name="area" formControlName="area" placeholder="Area of training">
+                        <option value="">Select Area of Training</option>
+                        <option>FSD</option>
+                        <option>ML-AI</option>
+                        <option>DSA</option>
+                        <option>RPA</option>
+                        <option>ST</option>
+                        <option>CSA</option>
+                      </select>
+                      <select class="form-select form-control me-4" name="requirements" formControlName="requirements" placeholder="Category of requirement">
+                        <option value="">Select Category</option>
+                        <option>Retail</option>
+                        <option>Academic</option>
+                        <option>Corporate</option>
+                        <option>Govt</option>
+                      </select>
+                      <button class="btn btn-outline-success" type="button" (click)="search()">Search</button>
+                    </div>
+                  </form>
                     <div class="container">
 
                         <div class="row">
@@ -216,13 +239,15 @@
                                                     <span class="waiting" *ngIf="item.approved == 0">Pending</span>
                                                 </td>
                                                
-                                                <td><button class="btn btn-info"
-                                                     data-bs-toggle="modal"
-                                                      data-bs-target="#response">Response</button></td>
+                                                <td><button class="btn btn-success" *ngIf="(item.response)"
+                                                     data-bs-target="#response">Responded</button>
+                                                      <button class="btn btn-info" *ngIf="!(item.response)"
+                                                      data-bs-toggle="modal"
+                                                       data-bs-target="#response">Response</button></td>
                                                 <td><i class="bi-eye-fill" data-bs-toggle="modal"
                                                         data-bs-target="#viewmodal">
 
-                                                    </i>&nbsp;&nbsp;<i class="bi-pencil-square"
+                                                    </i>&nbsp;&nbsp;<i class="bi-pencil-square" *ngIf="item.approved == 0"
                                                         [routerLink]="['/edit-requirement', item._id]">
                                                         &nbsp;&nbsp;</i></td>
                                             </tr>
