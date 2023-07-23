@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -47,5 +48,18 @@ export class RequirementserviceService {
   //  Approve Curriculum API - Admin
   updateItemToApproved(id: string): Observable<any> {
     return this.http.put(`http://localhost:3000/api/approve-curriculum/${id}`, { approved: 1 });
+  }
+
+  //   search filter - Admin
+  search(name: string, institution: string, area: string, requirements: string): Observable<any[]> {
+    const queryParams = `?name=${name}&institution=${institution}&area=${area}&requirements=${requirements}`;
+    const searchUrl = `http://localhost:3000/api/search/` + queryParams;
+
+    return this.http.get<any[]>(searchUrl).pipe(
+      catchError((error) => {
+        console.error('Error occurred while fetching search results:', error);
+        return [];
+      })
+    );
   }
 }

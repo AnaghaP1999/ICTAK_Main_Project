@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequirementserviceService } from '../requirementservice.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,15 @@ areas:any;
 reid:any;
 stat:any;
   itemIdInput: any;
-  constructor(private reqservice:RequirementserviceService, private route: ActivatedRoute, private router:Router,private http:HttpClient){}
+  searchForm: FormGroup;
+  constructor(private reqservice:RequirementserviceService, private route: ActivatedRoute, private router:Router,private http:HttpClient, private formBuilder: FormBuilder, ){
+    this.searchForm = this.formBuilder.group({
+      name: [''],
+      institution: [''],
+      area: [''],
+      requirements: [''],
+    });
+  }
 
   items:any;
   requirements: any = {};
@@ -102,4 +111,18 @@ ngOnInit(): void {
       }
     );
   }
+
+  //   search filter - Admin
+  search() {
+    const formValues = this.searchForm.value;
+    const name = formValues.name;
+    const institution = formValues.institution;
+    const area = formValues.area;
+    const requirements = formValues.requirements;
+
+    this.reqservice.search(name, institution, area, requirements).subscribe((data) => {
+      this.items = data;
+    });
+  }
+
 }
