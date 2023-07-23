@@ -14,8 +14,10 @@ export class HomeComponent implements OnInit{
 viewdetails:any=[];
 names:any;
 areas:any;
-reid:any;
-stat:any;
+institutes:any;
+req:any;
+hou:any;
+
   itemIdInput: any;
   searchForm: FormGroup;
   constructor(private reqservice:RequirementserviceService, private route: ActivatedRoute, private router:Router,private http:HttpClient, private formBuilder: FormBuilder, ){
@@ -62,10 +64,11 @@ ngOnInit(): void {
     this.viewdetails=  details
     console.log(details);
     console.log(this.viewdetails.data._id)
-    this.names=this.viewdetails.data._id;
-    this.areas=this.viewdetails.data.name;
-    this.reid=this.viewdetails.data._id
-    this.stat=this.viewdetails.data.approved
+    this.names=this.viewdetails.data.name;
+    this.areas=this.viewdetails.data.area;
+    this.institutes=this.viewdetails.data.institute;
+    this.req=this.viewdetails.data.requirements;
+    this.hou=this.viewdetails.data.hours
     });
   }
 
