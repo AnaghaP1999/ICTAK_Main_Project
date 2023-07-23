@@ -1,0 +1,78 @@
+<!-- Navbar -->
+<nav class="navbar">
+    <a class="navbar-brand" href="#">Home</a>
+  </nav>
+  
+  <div class="whole">
+    <div class="container">
+      <header class="header">
+        <img src="assets/ictak%20logo.png" alt="ICTAK Logo">
+        <h1 class="title">ICTAK</h1>
+        <h2 class="subtitle">Already have an account?</h2>
+      </header>
+      <br>
+    </div>
+  
+   <!-- Login Form Box -->
+<div class="login-box">
+    <h2 class="subtitle">Login</h2>
+    <form *ngIf="loginForm" [formGroup]="loginForm" (submit)="onLoginFormSubmit()">
+      <br>
+      <div class="form-group">
+        <label for="loginEmail" class="label">Email:</label>
+        <input type="text" id="loginEmail" class="input" required placeholder="Enter your email here" name="email" formControlName="email">
+        <div class="invalid-feedback" *ngIf="loginForm.get('email')!.invalid && loginForm.get('email')!.touched">
+          <span class="invalid-text">Please enter a valid email address.</span>
+        </div>
+      </div>
+  
+      <br>
+      <div class="form-group">
+        <label for="loginPassword" class="label">Password:</label>
+        <input type="password" id="loginPassword" class="input" required placeholder="Enter your password here" name="password" formControlName="password">
+        <div class="invalid-feedback" *ngIf="loginForm.get('password')!.invalid && loginForm.get('password')!.touched">
+          <span class="invalid-text">Password must contain at least one lowercase letter, one number, and one special character with a minimum length of 8 characters.</span>
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-login">Sign In</button>
+    </form>
+  </div>
+  
+  <!-- Signup Form Box -->
+  <div class="signup-box">
+    <h2 class="subtitle">Sign up for a new user!</h2>
+    <form *ngIf="signupForm" [formGroup]="signupForm" (submit)="onSignupFormSubmit()">
+      <br>
+      <div class="form-group">
+        <label for="name" class="label">Name:</label>
+        <input type="text" id="name" class="input" placeholder="Enter your full name here" formControlName="name">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="signupEmail" class="label">E-mail:</label>
+        <input type="text" class="input" id="signupEmail" placeholder="Enter your e-mail" formControlName="email">
+        <div class="invalid-feedback" *ngIf="signupForm.get('email')!.invalid && signupForm.get('email')!.touched">
+          <span class="invalid-text">Please enter a valid email address.</span>
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="signupPassword" class="label">Password:</label>
+        <input type="password" id="signupPassword" class="input" required placeholder="Enter your password here" formControlName="password">
+        <div class="invalid-feedback" *ngIf="signupForm.get('password')!.invalid && signupForm.get('password')!.touched">
+          <span class="invalid-text">Password must contain at least one lowercase letter, one number, and one special character with a minimum length of 8 characters.</span>
+        </div>
+      </div>
+  
+      <br>
+      <div class="form-group">
+        <button type="submit" class="btn btn-signup">Sign Up</button>
+      </div>
+    </form>
+  </div>
+  <br>
+  
+  
+  
+  

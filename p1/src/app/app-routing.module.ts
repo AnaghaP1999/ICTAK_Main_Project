@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { EditrequirementComponent } from './editrequirement/editrequirement.component';
 
-const routes: Routes = [{path:'',component:HomeComponent},{path:'edit-requirement/:id',component:EditrequirementComponent}];
+const routes: Routes = [{path:'home',component:HomeComponent},{path:'edit-requirement/:id',component:EditrequirementComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
