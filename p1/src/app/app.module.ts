@@ -9,13 +9,15 @@ import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { EditrequirementComponent } from './editrequirement/editrequirement.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FacultydashboardComponent } from './facultydashboard/facultydashboard.component'
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    EditrequirementComponent
+    EditrequirementComponent,
+    FacultydashboardComponent
   ],
   imports: [
     BrowserModule,
