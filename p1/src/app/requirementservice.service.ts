@@ -51,8 +51,8 @@ export class RequirementserviceService {
   }
 
   //   search filter - Admin
-  search(name: string, institution: string, area: string, requirements: string): Observable<any[]> {
-    const queryParams = `?name=${name}&institution=${institution}&area=${area}&requirements=${requirements}`;
+  search(name: string, institute: string, area: string, requirements: string): Observable<any[]> {
+    const queryParams = `?name=${name}&institute=${institute}&area=${area}&requirements=${requirements}`;
     const searchUrl = `http://localhost:3000/api/search/` + queryParams;
 
     return this.http.get<any[]>(searchUrl).pipe(

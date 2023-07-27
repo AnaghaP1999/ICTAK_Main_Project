@@ -121,12 +121,12 @@ router.put('/approve-curriculum/:id', async (req, res) => {
 //   search filter - Admin
 
   router.get('/search', (req, res) => {
-    const { name, institution, area, requirements } = req.query;
+    const { name, institute, area, requirements } = req.query;
     const filters = {};
-    if (name !== undefined && name !== '') filters.name = name;
-    if (institution !== undefined && institution !== '') filters.institution = institution;
-    if (area !== undefined && area !== '') filters.area = area;
-    if (requirements !== undefined && requirements !== '') filters.requirements = requirements;
+    if (name !== undefined && name !== '') filters.name = { $regex: new RegExp(name, 'i') };
+    if (institute !== undefined && institute !== '') filters.institute = { $regex: new RegExp(institute, 'i') };
+    if (area !== undefined && area !== '') filters.area = { $regex: new RegExp(area, 'i') };
+    if (requirements !== undefined && requirements !== '') filters.requirements = { $regex: new RegExp(requirements, 'i') };
     
     // Fetch data from db based on the filters
     requirementData.find(filters)

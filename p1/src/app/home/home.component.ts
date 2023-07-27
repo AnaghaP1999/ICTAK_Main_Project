@@ -23,7 +23,7 @@ hou:any;
   constructor(private reqservice:RequirementserviceService, private route: ActivatedRoute, private router:Router,private http:HttpClient, private formBuilder: FormBuilder ){
     this.searchForm = this.formBuilder.group({
       name: [''],
-      institution: [''],
+      institute: [''],
       area: [''],
       requirements: [''],
     });
@@ -119,11 +119,11 @@ ngOnInit(): void {
   search() {
     const formValues = this.searchForm.value;
     const name = formValues.name;
-    const institution = formValues.institution;
+    const institute = formValues.institute;
     const area = formValues.area;
     const requirements = formValues.requirements;
 
-    this.reqservice.search(name, institution, area, requirements).subscribe((data) => {
+    this.reqservice.search(name, institute, area, requirements).subscribe((data) => {
       this.items = data;
     });
   }
